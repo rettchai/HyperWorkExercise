@@ -1,6 +1,7 @@
 # HyperWorkExercise
  
-#install docker
+# install docker
 
-#set up with sail 8.2
+# set up with sail 8.2
 
+./vendor/bin/sail up -d

@@ -17,9 +17,9 @@ class OrderCreateTest extends TestCase
     public function test_order_create(): void
     {
 
-        $token = "5|hpKFkpQuRit8KagFTFBxC9is1EPWLHu99P59ZNRp0f5cee5f";
-        // $url = route('order.create');
-        $url = "http://localhost:8000/api/orders/create";
+        $token = env('TOKEN_FOR_UAT');
+        $url = route('order.create');
+        // $url = "http://localhost:8000/api/orders/create";
 
         $data = '
         {

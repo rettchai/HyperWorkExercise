@@ -38,9 +38,9 @@
 
 <body>
 
-    {{-- @include('layouts.navbar')
+    @include('layouts.navbar')
 
-    @include('layouts.aside') --}}
+    @include('layouts.aside')
 
     {{-- @include('layouts.body') --}}
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
@@ -30,9 +31,14 @@ Route::prefix('auth')->group(function () {
 Route::get('/test', [TestController::class,'test']);
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
 
-// Auth::routes();
+Route::get('/dashboard', function () {
+    return redirect()->route('home');
+})->name('dashboard');
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
+
+
+Route::get('/home',HomeController::class)->name('home');

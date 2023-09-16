@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     Route::get('/products', [ProductsController::class, 'index'])->name('products')->middleware('auth:sanctum');
+
     Route::post('/products/create', [ProductsController::class, 'create'])->name('products.create')->middleware('verified.product');
     Route::put('/products/update/{id}', [ProductsController::class, 'update'])->name('products.edit')->middleware('verified.product');
 

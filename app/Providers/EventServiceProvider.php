@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Events\OrderCreateEvent;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use SocialiteProviders\Manager\SocialiteWasCalled;
 use SocialiteProviders\Google\GoogleExtendSocialite;
+use App\Listeners\OrderCreateSendEmailtoAdminListeners;
 use SocialiteProviders\Facebook\FacebookExtendSocialite;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use SocialiteProviders\LaravelPassport\LaravelPassportExtendSocialite;
@@ -26,6 +28,9 @@ class EventServiceProvider extends ServiceProvider
             LaravelPassportExtendSocialite::class.'@handle',
             GoogleExtendSocialite::class.'@handle',
             FacebookExtendSocialite::class.'@handle',
+        ],
+        OrderCreateEvent::class => [
+            OrderCreateSendEmailtoAdminListeners::class,
         ],
     ];
 

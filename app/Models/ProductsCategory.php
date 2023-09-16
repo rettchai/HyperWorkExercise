@@ -15,4 +15,8 @@ class ProductsCategory extends Model
         'active',
     ];
 
+    public function OrdersUser()
+    {
+        return $this->hasMany(Products::class, 'products_categories_id', 'id');
+    }
 }

@@ -9,6 +9,8 @@ class UserRole extends Model
 {
     use HasFactory;
 
+    protected $table = 'users_roles';
+
     protected $fillable = [
         'role_name',
         'active',

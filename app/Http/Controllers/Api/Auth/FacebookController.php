@@ -51,7 +51,8 @@ class FacebookController extends Controller
         // }
 
 
-        $token = $login->createToken('viewer')->plainTextToken;
+        // $token = $login->createToken('viewer')->plainTextToken;
+        $token = $login->createToken($login->user_role->role_name)->plainTextToken;
         // dd($token);
         return response()->json([
             'access_token' => $token,

@@ -2,7 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\ApiAuthController;
+use App\Http\Controllers\Api\Orders\OrdersController;
+use App\Http\Controllers\Api\Products\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,31 +18,18 @@ use App\Http\Controllers\Api\Auth\ApiAuthController;
 |
 */
 
-
-// Route::prefix('auth')->group(function () {
-    //redirect
-    // Route::prefix('redirect')->group(function () {
-    //     Route::get('/google', [GoogleController::class,'getRedirect'])->name('google.login');
-    //     Route::get('/passport', [LaravelPassportController::class,'getRedirect'])->name('passport.login');
-    // });
-    //redirect
-
-    //callback
-    // Route::prefix('callback')->group(function () {
-    //     Route::get('/google', [GoogleController::class,'getCallback']);
-    //     Route::get('/passport', [LaravelPassportController::class,'getCallback']);
-    // });
-    //callback
-
-// });
-
 // Route::post('/register', [ApiAuthController::class, 'register'])->name('api.register');
 // Route::post('/login', [ApiAuthController::class, 'login'])->name('api.login');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:sanctum')->get('/user', [AuthController::class, 'user']);
+Route::middleware('auth:sanctum')->get('/me', [AuthController::class, 'me']);
 
-Route::middleware('auth:sanctum')->get('/me', function (Request $request) {
-    return $request->user();
-});
+Route::post('/orders/create', [OrdersController::class, 'createOrders'])->name('order.create')->middleware('auth:sanctum');
+Route::get('/orders', [OrdersController::class, 'Orders'])->name('Orders')->middleware('auth:sanctum');
+
+Route::get('/products', [ProductsController::class, 'index'])->name('products')->middleware('auth:sanctum');
+
+Route::post('/products/create', [ProductsController::class, 'create'])->name('products.create')->middleware(['auth:sanctum','verified.product']);
+Route::put('/products/update/{id}', [ProductsController::class, 'update'])->name('products.edit')->middleware('auth:sanctum','verified.product');
+
+

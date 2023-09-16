@@ -47,4 +47,14 @@ class ApiAuthController extends Controller
         ]);
     }
 
+    // public function login_by_pass(Request $request)
+    // {
+    //     $user = Auth::loginUsingId(1);
+    //     $token = $user->createToken('auth_token')->plainTextToken;
+    //     return response()->json([
+    //         'access_token' => $token->plainTextToken,
+    //         'token_type' => 'Bearer',
+    //     ]);
+    // }
+
 }

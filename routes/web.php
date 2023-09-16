@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\Api\Auth\GoogleController;
 use App\Http\Controllers\Api\Auth\ApiAuthController;
 use App\Http\Controllers\Api\Auth\FacebookController;
@@ -20,11 +21,13 @@ Route::prefix('auth')->group(function () {
         Route::get('/google', [GoogleController::class,'getCallback']);
         Route::get('/passport', [LaravelPassportController::class,'getCallback']);
         Route::get('/facebook', [FacebookController::class,'getCallback']);
+
+
     });
 
 
 });
-
+Route::get('/test', [TestController::class,'test']);
 
 Route::get('/', function () {
     return view('welcome');

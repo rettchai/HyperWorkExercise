@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Controllers\API\BaseController;
 use Closure;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class RestrictRegistrationToOneAdmin
+class VerifiedProductCrud extends BaseController
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,8 @@ class RestrictRegistrationToOneAdmin
     public function handle(Request $request, Closure $next): Response
     {
 
-        if (auth()->user()->role == 1) {
-            return redirect("/");
+        if($request->user()->user_role->role_name == 'viewer') {
+            return $this->sendError('error', array('permission' => 'permission denied.'));
         }
 
         return $next($request);

@@ -26,7 +26,7 @@ return new class () extends Migration {
 
             $table->timestamps();
 
-            $table->index(['orders_id','products_id','products_name_th','products_name_en', 'created_at']);
+            // $table->index(['orders_id','products_id','products_name_th','products_name_en', 'created_at']);
 
         });
     }

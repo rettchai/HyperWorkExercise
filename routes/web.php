@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\Auth\GoogleController;
 use App\Http\Controllers\Api\Auth\ApiAuthController;
 use App\Http\Controllers\Api\Auth\FacebookController;
 use App\Http\Controllers\Api\Auth\LaravelPassportController;
+use App\Livewire\Auth\LoginController;
 
 Route::prefix('auth')->group(function () {
     //redirect
@@ -38,7 +39,11 @@ Route::get('/dashboard', function () {
     return redirect()->route('home');
 })->name('dashboard');
 
-Auth::routes();
+// Auth::routes();
 
 
 Route::get('/home',HomeController::class)->name('home');
+Route::get('/login',LoginController::class)->name('login');
+Route::post('/logout', [LoginControllercl::class, 'logout'])->name('logout');
+
+

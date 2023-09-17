@@ -2,7 +2,10 @@
 <div>
     <div class="row">
         <div class="col-md-12 p-4">
-            <a href="{{ route('passport.login') }}">
+            {{-- <a href="{{ route('passport.login') }}">
+                <button class="btn bg-red-400 text-white"> login rmutr account</button>
+            </a> --}}
+            <a href="{{ route('passport.login.api') }}">
                 <button class="btn bg-red-400 text-white"> login rmutr account</button>
             </a>
         </div>

@@ -29,7 +29,8 @@ Route::prefix('auth')->group(function () {
 
 
 });
-Route::get('/test', [TestController::class,'test']);
+
+// Route::get('/test', [TestController::class,'test']);
 
 Route::get('/', function () {
     return redirect()->route('home');
@@ -44,6 +45,6 @@ Route::get('/dashboard', function () {
 
 Route::get('/home',HomeController::class)->name('home');
 Route::get('/login',LoginController::class)->name('login');
-Route::post('/logout', [LoginControllercl::class, 'logout'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 

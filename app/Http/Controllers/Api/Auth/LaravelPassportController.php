@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Models\User;
-use App\Models\Permissions;
-use Illuminate\Http\Request;
-use App\Models\RefPermissions;
+// use App\Models\Permissions;
+// use App\Models\RefPermissions;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Laravel\Socialite\Facades\Socialite;
 
 class LaravelPassportController extends Controller

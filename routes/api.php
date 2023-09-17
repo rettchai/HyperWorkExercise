@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\ApiAuthController;
 use App\Http\Controllers\Api\Orders\OrdersController;
 use App\Http\Controllers\Api\Products\ProductsController;
+use App\Http\Controllers\Api\Auth\LaravelPassportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,30 @@ use App\Http\Controllers\Api\Products\ProductsController;
 
 // Route::post('/register', [ApiAuthController::class, 'register'])->name('api.register');
 // Route::post('/login', [ApiAuthController::class, 'login'])->name('api.login');
+
+
+Route::prefix('auth')->group(function () {
+    //redirect
+    Route::prefix('redirect')->group(function () {
+        // Route::get('/google', [GoogleController::class,'getRedirect'])->name('google.login');
+        Route::get('/passport', [LaravelPassportController::class,'getRedirect'])->name('passport.login.api');
+        // Route::get('/facebook', [FacebookController::class,'getRedirect'])->name('facebook.login');
+    });
+    //redirect
+
+    Route::prefix('callback')->group(function () {
+        // Route::get('/google', [GoogleController::class,'getCallback']);
+        Route::get('/passport', [LaravelPassportController::class,'getCallback']);
+        // Route::get('/facebook', [FacebookController::class,'getCallback']);
+
+
+    });
+
+
+})->middleware('web');
+
+
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [AuthController::class, 'user']);
     Route::get('/me', [AuthController::class, 'me']);

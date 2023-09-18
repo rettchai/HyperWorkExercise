@@ -10,12 +10,12 @@
             </a>
         </div>
         <div class="col-md-12 p-4">
-            <a href="{{ route('google.login') }}">
+            <a href="{{ route('google.login.api') }}">
                 <button class="btn bg-red-700 text-white"> login google account</button>
             </a>
         </div>
         <div class="col-md-12 p-4">
-            <a href="{{ route('facebook.login') }}">
+            <a href="{{ route('facebook.login.api') }}">
                 <button class="btn bg-blue-500 text-white"> login faccebook </button>
             </a>
         </div>

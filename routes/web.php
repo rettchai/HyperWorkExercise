@@ -13,16 +13,16 @@ use App\Livewire\Auth\LoginController;
 Route::prefix('auth')->group(function () {
     //redirect
     Route::prefix('redirect')->group(function () {
-        Route::get('/google', [GoogleController::class,'getRedirect'])->name('google.login');
-        Route::get('/passport', [LaravelPassportController::class,'getRedirect'])->name('passport.login');
-        Route::get('/facebook', [FacebookController::class,'getRedirect'])->name('facebook.login');
+        // Route::get('/google', [GoogleController::class,'getRedirect'])->name('google.login');
+        // Route::get('/passport', [LaravelPassportController::class,'getRedirect'])->name('passport.login');
+        // Route::get('/facebook', [FacebookController::class,'getRedirect'])->name('facebook.login');
     });
     //redirect
 
     Route::prefix('callback')->group(function () {
-        Route::get('/google', [GoogleController::class,'getCallback']);
-        Route::get('/passport', [LaravelPassportController::class,'getCallback']);
-        Route::get('/facebook', [FacebookController::class,'getCallback']);
+        // Route::get('/google', [GoogleController::class,'getCallback']);
+        // Route::get('/passport', [LaravelPassportController::class,'getCallback']);
+        // Route::get('/facebook', [FacebookController::class,'getCallback']);
 
 
     });

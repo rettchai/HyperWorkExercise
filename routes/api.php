@@ -3,7 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Api\Auth\GoogleController;
 use App\Http\Controllers\Api\Auth\ApiAuthController;
+use App\Http\Controllers\Api\Auth\FacebookController;
 use App\Http\Controllers\Api\Orders\OrdersController;
 use App\Http\Controllers\Api\Products\ProductsController;
 use App\Http\Controllers\Api\Auth\LaravelPassportController;
@@ -26,22 +28,18 @@ use App\Http\Controllers\Api\Auth\LaravelPassportController;
 Route::prefix('auth')->group(function () {
     //redirect
     Route::prefix('redirect')->group(function () {
-        // Route::get('/google', [GoogleController::class,'getRedirect'])->name('google.login');
+        Route::get('/google', [GoogleController::class,'getRedirect'])->name('google.login.api');
         Route::get('/passport', [LaravelPassportController::class,'getRedirect'])->name('passport.login.api');
-        // Route::get('/facebook', [FacebookController::class,'getRedirect'])->name('facebook.login');
+        Route::get('/facebook', [FacebookController::class,'getRedirect'])->name('facebook.login.api');
     });
     //redirect
 
     Route::prefix('callback')->group(function () {
-        // Route::get('/google', [GoogleController::class,'getCallback']);
+        Route::get('/google', [GoogleController::class,'getCallback']);
         Route::get('/passport', [LaravelPassportController::class,'getCallback']);
-        // Route::get('/facebook', [FacebookController::class,'getCallback']);
-
-
+        Route::get('/facebook', [FacebookController::class,'getCallback']);
     });
-
-
-})->middleware('web');
+});
 
 
 
